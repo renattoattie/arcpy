@@ -18,13 +18,14 @@ mydir = os.path.join(base, datetime.datetime.now().strftime('%Y/%m/%d'))
 if not os.path.exists(mydir):
     os.makedirs(mydir)
 
+mydir = mydir.replace("/", "\\")
 
 for ds in datasets:
     fd = "Database Connections\\Connection to maq\\" + ds
-    file = mydir + ds + ".XML"
+    file = mydir + "\\" + ds + ".XML"
     arcpy.ExportXMLWorkspaceDocument_management(fd, file, "DATA", "BINARY", "METADATA")
 
 for cs in classe_n_fd:
     fd = "Database Connections\\Connection to maq\\" + cs
-    file = mydir + cs + ".XML"
+    file = mydir + "\\" + cs + ".XML"
     arcpy.ExportXMLWorkspaceDocument_management(cs, file, "DATA", "BINARY", "METADATA")
